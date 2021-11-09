@@ -104,15 +104,19 @@ func reslicing() {
 func copy_append_slice() {
 	slFrom := []int{1, 2, 3}
 	slTo := make([]int, 10)
-	copy(slTo, slFrom) // 切片复制过去
+	copy(slTo, slFrom) // 切片复制过去，返回copy的元素个数
 	fmt.Println(slTo)  // [1 2 3 0 0 0 0 0 0 0]
 	slTemp := []int{4, 5, 6}
 	slTo = append(slTo, slTemp...) // [1 2 3 0 0 0 0 0 0 0 4 5 6]
 	fmt.Println(slTo)
 }
-func main() {
-	// test1()
-	// season()
-	// reslicing()
-	copy_append_slice()
-}
+
+// append 方法总是返回成功，除非系统内存耗尽了。
+// 如果 s 的容量不足以存储新增元素，append 会分配新的切片来保证已有切片元素和新增元素的存储
+
+// func main() {
+// 	// test1()
+// 	// season()
+// 	// reslicing()
+// 	copy_append_slice()
+// }
